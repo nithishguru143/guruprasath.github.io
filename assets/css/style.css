@@ -1,0 +1,133 @@
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #fff;
+    color: #333;
+}
+
+a { text-decoration: none; }
+
+/* SPLIT LAYOUT */
+.split-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT SIDE */
+.left-side {
+    width: 40%;
+    background: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.left-inner {
+    width: 80%;
+    margin: auto;
+}
+
+.name {
+    font-size: 42px;
+    margin-bottom: 5px;
+}
+
+.name span {
+    color: #4CAF50;
+}
+
+.role {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.tagline {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.primary-btn {
+    background: #4CAF50;
+    padding: 12px 22px;
+    display: inline-block;
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.social-links a {
+    color: #4CAF50;
+    font-size: 16px;
+}
+
+/* RIGHT SIDE */
+.right-side {
+    width: 60%;
+    background: #fff;
+    padding: 40px 60px;
+    overflow-y: auto;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #111;
+    border-left: 4px solid #4CAF50;
+    padding-left: 10px;
+}
+
+/* SKILLS */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.skill-grid span {
+    background:#f3f3f3;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* EXPERIENCE */
+.exp-card {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.exp-card h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.duration {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.exp-card ul {
+    padding-left: 20px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .split-layout {
+        flex-direction: column;
+        height: auto;
+    }
+    .left-side, .right-side {
+        width: 100%;
+        padding: 40px;
+    }
+    .left-side {
+        text-align: center;
+    }
+}
