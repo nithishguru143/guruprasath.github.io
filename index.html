@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guru Prasath • WordPress Developer</title>
+
+  <!-- Import modern Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* --------------------------------------------------
+       MODERNIZED ROOT VARIABLES
+    -------------------------------------------------- */
+    :root {
+      --bg-dark: #0d0d0d;
+      --bg-light: #f6f8fa;
+      --card: #ffffff;
+      --accent: #21759b;
+      /* WordPress Blue */
+      --accent-light: #4aa3d4;
+      --muted: #6e7781;
+      --max-width: 1200px;
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    /* --------------------------------------------------
+       GLOBAL RESET & SMOOTH UI
+    -------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      background: var(--bg-light);
+      color: #111;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    .container {
+      width: 92%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* --------------------------------------------------
+       MODERN STICKY HEADER WITH BLUR
+    -------------------------------------------------- */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 18px 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 28px;
+      font-weight: 500;
+    }
+
+    .nav a {
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.3s;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* --------------------------------------------------
+       MODERN HERO SECTION
+    -------------------------------------------------- */
+    .hero {
+      padding: 120px 0 80px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .role {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 22px;
+    }
+
+    .tagline {
+      margin-top: 22px;
+      max-width: 620px;
+      font-size: 18px;
+      opacity: 0.85;
+    }
+
+    /* Buttons Modern */
+    .btn-primary {
+      padding: 14px 26px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius);
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 28px;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+    }
+
+    .btn-ghost {
+      padding: 14px 26px;
+      border-radius: var(--radius);
+      border: 1px solid #ccc;
+      margin-left: 12px;
+      font-weight: 600;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* --------------------------------------------------
+       SKILLS — MODERN TAGS
+    -------------------------------------------------- */
+    .skills {
+      margin-top: 70px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skill-pill {
+      background: #fff;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 500;
+      border: 1px solid #e5e5e5;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .skill-pill:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    /* --------------------------------------------------
+       MODERN PROJECT CARDS
+    -------------------------------------------------- */
+    .projects {
+      margin-top: 80px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .proj-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      transition: 0.35s;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .proj-thumb {
+      height: 180px;
+      border-radius: var(--radius);
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 14px;
+    }
+
+    .proj-title {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .proj-role {
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    /* --------------------------------------------------
+       TOOLS & WORKFLOW
+    -------------------------------------------------- */
+    .design-system {
+      margin-top: 100px;
+      padding: 40px;
+      border-radius: var(--radius);
+      background: var(--bg-dark);
+      box-shadow: var(--shadow);
+      color: #fff;
+    }
+
+    .tool-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: var(--radius);
+      width: 230px;
+    }
+
+    /* --------------------------------------------------
+       CONTACT — CLEAN + SIMPLE
+    -------------------------------------------------- */
+    .contact {
+      margin-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* TYPEWRITER ANIMATION */
+    #typewriter {
+      border-right: 3px solid var(--accent);
+      padding-right: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: caretBlink 0.7s infinite;
+    }
+
+    #skills,
+    #projects,
+    #design,
+    #contact {
+      scroll-margin-top: 120px;
+    }
+
+
+    @keyframes caretBlink {
+
+      0%,
+      50% {
+        border-color: var(--accent);
+      }
+
+      51%,
+      100% {
+        border-color: transparent;
+      }
+    }
+
+    /* DARK MODE */
+    .dark-mode {
+      --bg-light: #0d0d0d;
+      --card: #161616;
+      --muted: #b8b8b8;
+      background: #0d0d0d !important;
+      color: #ffffff !important;
+    }
+
+    .dark-mode header {
+      background: rgba(0, 0, 0, 0.6) !important;
+      border-bottom: 1px solid #333;
+    }
+
+    .dark-mode .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border-color: #666;
+    }
+
+    .dark-mode .skill-pill {
+      background: #161616;
+      border-color: #333;
+    }
+
+    .dark-mode .proj-card {
+      background: #161616;
+    }
+
+    .dark-mode .design-system {
+      background: #111;
+    }
+
+    body,
+    .proj-card,
+    .skill-pill,
+    header {
+      transition: 0.35s ease;
+    }
+
+    /* Responsive CSS omitted for readability (same as before) */
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#design">Tools</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button id="theme-toggle" style="
+  position:absolute;
+  left:20px;
+  top:20px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  background:#fff;
+  cursor:pointer;
+  font-size:14px;
+">
+      🌙 Dark Mode
+    </button>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="hero container" style="display:flex;align-items:center;justify-content:space-between;gap:40px;">
+    <div class="hero-left">
+      <h1>Guru Prasath <span>.V</span></h1>
+      <div class="role"><span id="typewriter"></span></div>
+
+      <p class="tagline">
+        WordPress & Frontend Developer with 3+ years of experience building fast,
+        scalable, pixel-perfect websites across education, healthcare,
+        construction, and corporate domains. Specialized in custom themes, ACF modules,
+        UI engineering, Core Web Vitals, and performance-driven builds.
+      </p>
+
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-ghost">Hire Me</a>
+    </div>
+
+    <div class="hero-img" style="flex-shrink:0;">
+      <img src="/assets/image/profile.jpg" alt="Profile"
+        style="width:auto;height:350px;object-fit:contain;border-radius:20px;box-shadow:var(--shadow);" />
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills container">
+    <h2>Core Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-pill">Custom Themes</div>
+      <div class="skill-pill">ACF Pro</div>
+      <div class="skill-pill">Plugins & Hooks</div>
+      <div class="skill-pill">WP Query</div>
+      <div class="skill-pill">API Integrations</div>
+      <div class="skill-pill">HTML</div>
+      <div class="skill-pill">CSS</div>
+      <div class="skill-pill">JavaScript</div>
+      <div class="skill-pill">jQuery</div>
+      <div class="skill-pill">Bootstrap</div>
+      <div class="skill-pill">Git</div>
+      <div class="skill-pill">Figma</div>
+      <div class="skill-pill">VS Code</div>
+      <div class="skill-pill">SEO Optimization</div>
+      <div class="skill-pill">Performance Tuning</div>
+      <div class="skill-pill">Core Web Vitals</div>
+      <div class="skill-pill">Cross-Browser Fixes</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects container">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background-image:url('https://via.placeholder.com/600x400?text=Novistra');">
+        </div>
+        <div class="proj-title">Novistra — Article & Card Update</div>
+        <div class="proj-role">WordPress & Frontend Developer</div>
+        <p style="color:var(--muted)">Improved article listing layouts, upgraded UI card components, fixed formatting
+          and
+          spacing issues, and ensured template consistency across the site.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background-image:url('https://via.placeholder.com/600x400?text=DofE');"></div>
+        <div class="proj-title">DofE — Your Story Pages</div>
+        <div class="proj-role">WordPress Developer</div>
+        <p style="color:var(--muted)">Developed dynamic template structures, improved page performance, fixed UI issues,
+          and enhanced the content publishing workflow for editors.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background-image:url('https://via.placeholder.com/600x400?text=Healthcare');">
+        </div>
+        <div class="proj-title">Healthcare Portal — UI & Performance Fixes</div>
+        <div class="proj-role">Frontend Engineer</div>
+        <p style="color:var(--muted)">Resolved responsive errors, improved accessibility, and optimized UI components to
+          enhance frontend performance.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TOOLS & WORKFLOW -->
+  <section id="design" class="design-system container">
+    <h2>Tools & Workflow</h2>
+    <p>Technologies and tools I use daily to build high-quality, performance-focused WordPress projects.</p>
+
+    <div style="display:flex;gap:25px;flex-wrap:wrap;margin-top:25px;">
+
+      <div class="tool-box">
+        <h4 style="margin:0 0 10px;color:var(--accent-light);">Development</h4>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li>VS Code</li>
+          <li>Git & GitHub</li>
+          <li>Chrome DevTools</li>
+          <li>LocalWP / XAMPP</li>
+        </ul>
+      </div>
+
+      <div class="tool-box">
+        <h4 style="margin:0 0 10px;color:var(--accent-light);">WordPress Stack</h4>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li>Custom Themes</li>
+          <li>ACF Pro (Flexible Content)</li>
+          <li>Custom Post Types</li>
+          <li>Reusable Modules</li>
+          <li>WP Query & Hooks</li>
+        </ul>
+      </div>
+
+      <div class="tool-box">
+        <h4 style="margin:0 0 10px;color:var(--accent-light);">Frontend</h4>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li>HTML / CSS / JS</li>
+          <li>Bootstrap</li>
+          <li>jQuery</li>
+          <li>Responsive UI</li>
+          <li>Cross-Browser Fixes</li>
+        </ul>
+      </div>
+
+      <div class="tool-box">
+        <h4 style="margin:0 0 10px;color:var(--accent-light);">Workflow</h4>
+        <ul style="padding-left:18px;line-height:1.7;">
+          <li>Figma Handoff</li>
+          <li>Performance Optimization</li>
+          <li>SEO Basics</li>
+          <li>Core Web Vitals</li>
+          <li>API Integrations</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact container">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> <a href="mailto:guruprasath.frontend@gmail.com">guruprasath.frontend@gmail.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+918072741393">8072741393</a></p>
+    <p><strong>Location:</strong> Karur, Tamil Nadu</p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/guruprasath-wordpress/">Check Here</a></p>
+
+    <a href="#" class="btn-primary" style="margin-top:25px;display:inline-block;">Download Resume</a>
+  </section>
+
+  <footer>
+    © 2025 • Guru Prasath V
+  </footer>
+
+  <script>
+    const words = [
+      "WordPress Developer",
+      "Frontend Developer",
+      "ACF & Custom Theme Specialist"
+    ];
+
+    let i = 0, j = 0, current = "", isDeleting = false;
+
+    function type() {
+      current = words[i];
+      const display = document.getElementById("typewriter");
+
+      if (!isDeleting) {
+        display.textContent = current.slice(0, j++);
+        if (j > current.length) {
+          isDeleting = true;
+          setTimeout(type, 1200);
+          return;
+        }
+      } else {
+        display.textContent = current.slice(0, j--);
+        if (j < 0) {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+      }
+
+      setTimeout(type, isDeleting ? 60 : 100);
+    }
+
+    type();
+
+    const toggle = document.getElementById("theme-toggle");
+
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggle.textContent =
+        document.body.classList.contains("dark-mode")
+          ? "☀️ Light Mode"
+          : "🌙 Dark Mode";
+    });
+  </script>
+
+</body>
+
+</html>
